@@ -1,0 +1,2006 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<link rel="shortcut icon" href="/content/img/favicon.png">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Lottery-Admin</title>
+    <link rel="stylesheet" href="../assets/lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../assets/lib/Ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="../assets/lib/SpinKit/css/spinkit.css">
+    <link rel="stylesheet" href="../assets/lib/datatables/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="../assets/lib/jqvmap/css/jqvmap.min.css">
+    <link rel="stylesheet" href="../assets/lib/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../assets/lib/chartist/css/chartist.css">
+    <link rel="stylesheet" href="../assets/lib/rickshaw/css/rickshaw.min.css">
+    <link rel="stylesheet" href="../assets/lib/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../assets/css/slim.css">
+    <script src="../assets/lib/jquery/js/jquery.js"></script>
+
+</head>
+<body id="">
+    <div class="slim-header">
+        <div class="container">
+            <div class="slim-header-left">
+                <!--<h2 class="slim-logo"><a href="/Admin"><img style=" max-width: 150px; max-height: 52px; position: relative; top: 2px;" src="../content/img/newlogo-light.png" class="logo" alt="" /><span></span></a></h2>-->
+                <h2 class="slim-logo"><a href="#">Lottery Admin<span>.</span></a></h2>
+
+
+            </div><!-- slim-header-left -->
+            <div class="slim-header-right">
+
+                <div class="dropdown dropdown-c">
+                    <a href="#" class="logged-user" data-toggle="dropdown">
+                        <img src="http://via.placeholder.com//500x500" alt="">
+                        <span>Admin</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <nav class="nav">
+                            <a href="#" class="nav-link"><i class="icon ion-forward"></i> Sign Out</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slim-navbar">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Admin/Index.html">
+                        <i class="icon ion-ios-home-outline"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                </li>
+                <!--<li class="nav-item with-sub">
+        <a class="nav-link" href="#" data-toggle="dropdown">
+            <i class="icon ion-grid"></i>
+            <span>Property</span>
+        </a>
+        <div class="sub-item">
+            <ul>
+                <li><a href="/Admin/AllProperty">All Property</a></li>
+                <li><a href="/Admin/AddProperty">Add Property</a></li>
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item with-sub">
+        <a class="nav-link" href="#">
+            <i class="icon ion-ios-person-outline"></i>
+            <span>Broker</span>
+        </a>
+        <div class="sub-item">
+            <ul>
+                <li><a href="/Admin/AllBroker">All Broker</a></li>
+                <li><a href="/Admin/AddBroker">Add Broker</a></li>
+
+            </ul>
+        </div>-->
+                <!-- sub-item -->
+                <!--</li>
+    <li class="nav-item with-sub">
+        <a class="nav-link" href="#">
+            <i class="icon ion-ios-person-outline"></i>
+            <span>Owner</span>
+        </a>
+        <div class="sub-item">
+            <ul>
+                <li><a href="/Admin/AllOwner">All Owner</a></li>
+                <li><a href="/Admin/AddOwner">Add Owner</a></li>
+
+            </ul>
+        </div>
+    </li>-->
+                <li class="nav-item with-sub">
+                    <a class="nav-link" href="#" data-toggle="dropdown">
+                        <i class="icon ion-ios-person-outline"></i>
+                        <span>User</span>
+                    </a>
+                    <div class="sub-item">
+                        <ul>
+
+                            <li><a href="/Admin/AllUser.html">All User</a></li>
+                            <li><a href="/Admin/AddUser.html">Add User</a></li>
+
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Winner.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Winner</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Payment.html">
+                        <i class="icon fa fa-inr" style="font-size:19px"></i>
+                        <span>Payment</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Lottery.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Lottery</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Profile.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Profile</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Enquiry.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Enquiry</span>
+                    </a>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="slim-mainpanel">
+        <!--@RenderBody()-->
+        <div class="container">
+
+
+
+
+            <div class="card card-dash-one mg-t-20">
+                <div class="row no-gutters">
+                    <div class="col-lg-4">
+                        <i class="icon ion-ios-people"></i>
+                        <div class="dash-content">
+
+                            <label class="tx-primary"><a href="#">NO. OF USERS</a></label>
+                            <h2>5364</h2>
+                        </div><!-- dash-content -->
+                    </div><!-- col-3 -->
+                    <div class="col-lg-4">
+                        <i class="icon ion-ios-cart"></i>
+                        <div class="dash-content">
+
+                            <label class="tx-success"><a href="#">NO. OF WINNERS</a></label>
+                            <h2>13</h2>
+                        </div><!-- dash-content -->
+                    </div><!-- col-3 -->
+                    <div class="col-lg-4">
+                        <i class="icon ion-gear-b"></i>
+                        <div class="dash-content">
+                            <label class="tx-purple"><a href="#">NO. OF TRANSACTIONS</a></label>
+                            <h2>119</h2>
+                        </div><!-- dash-content -->
+                    </div>
+
+                </div><!-- row -->
+            </div><!-- card -->
+
+            <div class="row row-sm mg-t-20">
+                <div class="col-lg-6">
+                    <div class="card card-table">
+                        <div class="card-header">
+                            <h6 class="slim-card-title">Recently Transactions</h6>
+                        </div><!-- card-header -->
+                        <div class="table-responsive">
+                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
+                                <div id="DataTables_Table_0_filter" class="dataTables_filter"><label><input type="search" class="" placeholder="Search..." aria-controls="DataTables_Table_0"></label></div><table class="table mg-b-0 tx-13 datatable dataTable no-footer dtr-inline" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 533px;">
+                                    <thead>
+                                        <tr class="tx-10" role="row"><th class="wd-10p pd-y-5 sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 55px;" aria-sort="ascending" aria-label="&amp;nbsp;: activate to sort column descending">&nbsp;</th><th class="pd-y-5 sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 67px;" aria-label="Name: activate to sort column ascending">Name</th><th class="pd-y-5 tx-left sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 219px;" aria-label="Company: activate to sort column ascending">Company</th><th class="pd-y-5 sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 96px;" aria-label="Date: activate to sort column ascending">Date</th></tr>
+                                    </thead>
+                                    <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">Bob</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-success mg-r-5 rounded-circle"></span> Simeone</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">Autoland</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>08 Jan</span> 2019</td>
+
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">Bob</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-success mg-r-5 rounded-circle"></span> Simeone</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">PCCW Global, Inc.</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>08 Jan</span> 2019</td>
+
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">Bob</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-success mg-r-5 rounded-circle"></span> Simeone</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">MUFG Investor Services</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>08 Jan</span> 2019</td>
+
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-danger mg-r-5 rounded-circle"></span> N.A</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">Demogo Co</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>08 Jan</span> 2019</td>
+
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-danger mg-r-5 rounded-circle"></span> N.A</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">OGRGP</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>22 Sep</span> 2018</td>
+
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-danger mg-r-5 rounded-circle"></span> N.A</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">P\S\L Group</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>03 Nov</span> 2018</td>
+
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-danger mg-r-5 rounded-circle"></span> N.A</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">Milrose Consultants</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>14 Jan</span> 2019</td>
+
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-danger mg-r-5 rounded-circle"></span> N.A</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">Jetro Holdings</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>16 Apr</span> 2019</td>
+
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-danger mg-r-5 rounded-circle"></span> N.A</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">i2Systems</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>21 May</span> 2019</td>
+
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//800x533" onerror="this.src = &quot;http://via.placeholder.com//800x533&quot;" class="wd-55" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block"><span class="square-8 bg-danger mg-r-5 rounded-circle"></span> N.A</span>
+                                            </td>
+
+                                            <td class="valign-middle tx-left">SIDWELL &amp; ASSOC Ins</td>
+
+                                            <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>01 Jan</span> 1</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 1,335 entries</div><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><a class="paginate_button previous disabled" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" id="DataTables_Table_0_previous">Previous</a><span><a class="paginate_button current" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0">5</a><span class="ellipsis">�</span><a class="paginate_button " aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0">134</a></span><a class="paginate_button next" aria-controls="DataTables_Table_0" data-dt-idx="7" tabindex="0" id="DataTables_Table_0_next">Next</a></div>
+                            </div>
+                        </div><!-- table-responsive -->
+                        <!--<div class="card-footer tx-12 pd-y-15 bg-transparent">
+                    <a href="/Super-Admin/ManageClient"><i class="fa fa-angle-down mg-r-5"></i>View All Registered Company</a>
+                </div>-->
+                        <!-- card-footer -->
+                    </div><!-- card -->
+                </div>
+                <!-- col-6 -->
+                <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+                    <div class="card card-table">
+                        <div class="card-header">
+                            <h6 class="slim-card-title">Recently Winners</h6>
+                        </div><!-- card-header -->
+                        <div class="table-responsive">
+                            <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper no-footer">
+                                <div id="DataTables_Table_1_filter" class="dataTables_filter"><label><input type="search" class="" placeholder="Search..." aria-controls="DataTables_Table_1"></label></div><table class="table mg-b-0 tx-13 datatable dataTable no-footer dtr-inline" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info" style="width: 534px;">
+                                    <thead>
+                                        <tr class="tx-10" role="row"><th class="wd-10p pd-y-5 sorting_asc" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 36px;" aria-sort="ascending" aria-label="&amp;nbsp;: activate to sort column descending">&nbsp;</th><th class="pd-y-5 sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 189px;" aria-label="Name: activate to sort column ascending">Name</th><th class="pd-y-5 sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 103px;" aria-label="Contact: activate to sort column ascending">Contact</th><th class="pd-y-5 sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 110px;" aria-label="Request Date: activate to sort column ascending">Request Date</th></tr>
+                                    </thead>
+                                    <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">Kristie</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-success mg-r-5 rounded-circle"></span> 9166253561
+                                            </td>
+                                            <td>05 Dec 2021</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">Vernell</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-success mg-r-5 rounded-circle"></span> 07069931750
+                                            </td>
+                                            <td>30 Nov 2021</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">Beryl</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-success mg-r-5 rounded-circle"></span> 06818142630
+                                            </td>
+                                            <td>30 Nov 2021</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">Nick</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-success mg-r-5 rounded-circle"></span> 07861753211
+                                            </td>
+                                            <td>28 Nov 2021</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">Jim</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-success mg-r-5 rounded-circle"></span> 2702444384
+                                            </td>
+                                            <td>27 Nov 2021</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">Daniele Wylie</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-danger mg-r-5 rounded-circle"></span> <span>N.A</span>
+                                            </td>
+                                            <td>28 Nov 2020</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">newalexabusinessdirectory.top</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-danger mg-r-5 rounded-circle"></span> <span>N.A</span>
+                                            </td>
+                                            <td>23 Nov 2020</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">Eric Stockwell</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-danger mg-r-5 rounded-circle"></span> <span>N.A</span>
+                                            </td>
+                                            <td>23 Nov 2020</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">Video Marketing Now</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-danger mg-r-5 rounded-circle"></span> <span>N.A</span>
+                                            </td>
+                                            <td>16 Nov 2020</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="pd-l-20 sorting_1" tabindex="0">
+                                                <img src="http://via.placeholder.com//500x500" onerror="this.src = &quot;http://via.placeholder.com//500x500&quot;" class="wd-36 rounded-circle" alt="Image">
+                                            </td>
+                                            <td>
+                                                <a href="" class="tx-inverse tx-14 tx-medium d-block">N.A</a>
+                                                <span class="tx-11 d-block">Data Match</span>
+                                            </td>
+                                            <td class="tx-12">
+                                                <span class="square-8 bg-danger mg-r-5 rounded-circle"></span> <span>N.A</span>
+                                            </td>
+                                            <td>10 Nov 2020</td>
+                                        </tr>
+                                    </tbody>
+                                </table><div class="dataTables_info" id="DataTables_Table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 119 entries</div><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_1_paginate"><a class="paginate_button previous disabled" aria-controls="DataTables_Table_1" data-dt-idx="0" tabindex="0" id="DataTables_Table_1_previous">Previous</a><span><a class="paginate_button current" aria-controls="DataTables_Table_1" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="DataTables_Table_1" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="DataTables_Table_1" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="DataTables_Table_1" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="DataTables_Table_1" data-dt-idx="5" tabindex="0">5</a><span class="ellipsis">�</span><a class="paginate_button " aria-controls="DataTables_Table_1" data-dt-idx="6" tabindex="0">12</a></span><a class="paginate_button next" aria-controls="DataTables_Table_1" data-dt-idx="7" tabindex="0" id="DataTables_Table_1_next">Next</a></div>
+                            </div>
+                        </div><!-- table-responsive -->
+                        <!--<div class="card-footer tx-12 pd-y-15 bg-transparent">
+                    <a href="/Super-Admin/DemoRequest"><i class="fa fa-angle-down mg-r-5"></i>View All Demo Notification</a>
+                </div>-->
+                        <!-- card-footer -->
+                    </div><!-- card -->
+                </div>
+                <!-- col-6 -->
+            </div><!-- row -->
+
+
+
+        </div>
+    </div>
+    <div class="slim-footer">
+        <div class="container">
+            <p>Copyright 2021 &copy; All Rights Reserved</p>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            'use strict';
+
+            $('#datatable1').DataTable({
+                responsive: true,
+                bLengthChange: false,
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                    lengthMenu: '_MENU_ items/page',
+                }
+            });
+
+
+        });
+    </script>
+    <script src="../assets/lib/popper.js/js/popper.js"></script>
+    <script src="../assets/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/lib/jquery.cookie/js/jquery.cookie.js"></script>
+    <script src="../assets/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="../assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
+    <script src="../assets/lib/select2/js/select2.min.js"></script>
+    <script src="../assets/lib/select2/js/select2.full.min.js"></script>
+    <script src="../assets/lib/moment/js/moment.js"></script>
+    <script src="../assets/lib/d3/js/d3.js"></script>
+    <script src="../assets/lib/rickshaw/js/rickshaw.min.js"></script>
+    <script src="../assets/lib/gmaps/js/gmaps.js"></script>
+    <script src="../assets/lib/peity/js/jquery.peity.js"></script>
+    <script src="../assets/js/slim.js"></script>
+    <script src="../assets/js/ResizeSensor.js"></script>
+    <script src="../assets/js/widgets.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>

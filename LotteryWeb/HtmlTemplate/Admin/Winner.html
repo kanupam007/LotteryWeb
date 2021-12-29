@@ -1,0 +1,1215 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<link rel="shortcut icon" href="/content/img/favicon.png">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Lottery-Admin</title>
+    <link rel="stylesheet" href="../assets/lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../assets/lib/Ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="../assets/lib/SpinKit/css/spinkit.css">
+    <link rel="stylesheet" href="../assets/lib/datatables/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="../assets/lib/jqvmap/css/jqvmap.min.css">
+    <link rel="stylesheet" href="../assets/lib/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../assets/lib/chartist/css/chartist.css">
+    <link rel="stylesheet" href="../assets/lib/rickshaw/css/rickshaw.min.css">
+    <link rel="stylesheet" href="../assets/lib/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../assets/css/slim.css">
+    <script src="../assets/lib/jquery/js/jquery.js"></script>
+    <!--<link rel="stylesheet" href="../assets/css/main.css">-->
+    <style>
+        .cmn-btn {
+            padding: 15px 35px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 999px;
+            -webkit-border-radius: 999px;
+            -moz-border-radius: 999px;
+            -ms-border-radius: 999px;
+            -o-border-radius: 999px;
+            background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+            background-image: -webkit-linear-gradient( 86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+            background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+            box-shadow: 0px 17px 40px 0px rgb(124 78 25 / 35%);
+            -webkit-transition: background-size 0.3s;
+            -o-transition: background-size 0.3s;
+            transition: background-size 0.3s;
+            color: #ffffff;
+        }
+        /* winner section start */
+        .winner-wrapper {
+            background-image: -moz-linear-gradient(90deg, #e82a7a 0%, #360354 100%);
+            background-image: -webkit-linear-gradient(90deg, #e82a7a 0%, #360354 100%);
+            background-image: -ms-linear-gradient(90deg, #e82a7a 0%, #360354 100%);
+            padding-right: 30px;
+            padding-top: 30px;
+            margin-bottom: 75px;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 575px) {
+            .winner-wrapper {
+                padding-left: 30px;
+            }
+        }
+
+        .winner-wrapper .left {
+            width: 75%;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        @media (max-width: 1199px) {
+            .winner-wrapper .left {
+                width: 65%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .winner-wrapper .left {
+                width: 60%;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .winner-wrapper .left {
+                display: none;
+            }
+        }
+
+        .winner-wrapper .left .winner-prize-thumb {
+            margin-left: -65px;
+            margin-bottom: -100px;
+            -webkit-transform: translateY(25px);
+            -ms-transform: translateY(25px);
+            transform: translateY(25px);
+        }
+
+        @media (max-width: 1350px) {
+            .winner-wrapper .left .winner-prize-thumb {
+                margin-left: -25px;
+            }
+        }
+
+        @media (max-width: 1199px) {
+            .winner-wrapper .left .winner-prize-thumb {
+                margin-bottom: 0;
+                -webkit-transform: translateY(0);
+                -ms-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+        .winner-wrapper .right {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: center;
+            width: 25%;
+        }
+
+        @media (max-width: 991px) {
+            .winner-wrapper .right {
+                width: 30%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .winner-wrapper .right {
+                width: 35%;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .winner-wrapper .right {
+                width: 100%;
+            }
+        }
+
+        .winner-wrapper .right .winner-slider {
+            width: 100%;
+        }
+
+        .winner-slide-item {
+            position: relative;
+        }
+
+            .winner-slide-item .winner-thumb {
+                text-align: center;
+            }
+
+                .winner-slide-item .winner-thumb img {
+                    display: inline-block;
+                }
+
+            .winner-slide-item .winner-content {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                padding: 15px 30px;
+                text-align: center;
+                border-radius: 20px 20px 0 0;
+                -webkit-border-radius: 20px 20px 0 0;
+                -moz-border-radius: 20px 20px 0 0;
+                -ms-border-radius: 20px 20px 0 0;
+                -o-border-radius: 20px 20px 0 0;
+            }
+
+                .winner-slide-item .winner-content .winner-name {
+                    font-size: 18px;
+                    text-transform: capitalize;
+                }
+
+                .winner-slide-item .winner-content p {
+                    font-size: 15px;
+                    color: #0f0233;
+                }
+
+                .winner-slide-item .winner-content .draw-date {
+                    font-size: 24px;
+                    font-weight: 600;
+                    color: #ffffff;
+                    line-height: 1.4;
+                }
+
+        .winner-slider .slick-arrow {
+            position: absolute;
+            bottom: -70px;
+            right: -30px;
+            cursor: pointer;
+        }
+
+            .winner-slider .slick-arrow:hover i {
+                color: #ff0000;
+            }
+
+            .winner-slider .slick-arrow i {
+                color: #57538e;
+                font-size: 70px;
+                -webkit-transition: all 0.3s;
+                -o-transition: all 0.3s;
+                transition: all 0.3s;
+            }
+
+            .winner-slider .slick-arrow.prev {
+                right: 75px;
+            }
+
+        /* winner section edn *
+            /* winner details section css start */
+        .winner-details-wrapper {
+            padding: 50px 20px;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            -o-border-radius: 20px;
+        }
+
+        @media (max-width: 575px) {
+            .winner-details-wrapper {
+                padding: 30px 20px;
+            }
+        }
+
+        .winner-details-wrapper .left {
+            width: 25%;
+        }
+
+        @media (max-width: 1199px) {
+            .winner-details-wrapper .left {
+                width: 20%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .winner-details-wrapper .left {
+                display: none;
+            }
+        }
+
+        .winner-details-wrapper .body {
+            width: 50%;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1199px) {
+            .winner-details-wrapper .body {
+                width: 60%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .winner-details-wrapper .body {
+                width: 100%;
+            }
+        }
+
+        .winner-details-wrapper .body p, .winner-details-wrapper .body span {
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .winner-details-wrapper .body .contest-date span {
+            color: #27ff5a;
+        }
+
+        .winner-details-wrapper .body .line {
+            width: 215px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            margin: 25px auto;
+        }
+
+        .winner-details-wrapper .body .title {
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .winner-details-wrapper .body .numbers {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 767px) {
+            .winner-details-wrapper .body .numbers {
+                justify-content: center;
+            }
+        }
+
+        .winner-details-wrapper .body .numbers li {
+            padding: 10px 10px;
+            width: calc((100% / 7) - 10px);
+            background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+            background-image: -webkit-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+            background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+            box-shadow: 0px 17px 40px 0px rgba(243, 42, 126, 0.35);
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            font-size: 38px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        @media (max-width: 767px) {
+            .winner-details-wrapper .body .numbers li {
+                font-size: 32px;
+                width: auto;
+                margin: 3px;
+            }
+        }
+
+        .winner-details-wrapper .body .btn-border {
+            color: #ffffff;
+            padding: 10px 35px;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+            .winner-details-wrapper .body .btn-border:hover {
+                background-color: #ffb200;
+            }
+
+        .winner-details-wrapper .right {
+            width: 25%;
+        }
+
+        @media (max-width: 1199px) {
+            .winner-details-wrapper .right {
+                width: 20%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .winner-details-wrapper .right {
+                display: none;
+            }
+        }
+
+        /* winner details section css end */
+        /* latest winner section css start */
+        .latest-winner-section .el-1, .latest-winner-section .el-2, .latest-winner-section .el-3 {
+            position: absolute;
+        }
+
+        .latest-winner-section .el-1 {
+            top: 0;
+            left: 10%;
+        }
+
+        .latest-winner-section .el-2 {
+            top: 4%;
+            left: 39%;
+        }
+
+        .latest-winner-section .el-3 {
+            top: 0;
+            right: 12%;
+        }
+
+        .number-check-wrapper {
+            padding: 30px;
+            background-color: #4939c1;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            -o-border-radius: 20px;
+        }
+
+        .check-number-form .number-list-wrapper p {
+            color: #ffffff;
+        }
+
+        .check-number-form .number-list-wrapper .number-list {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 991px) {
+            .check-number-form .number-list-wrapper .number-list {
+                justify-content: flex-start;
+            }
+        }
+
+        .check-number-form .number-list-wrapper .number-list input {
+            width: 36px;
+            min-height: 36px;
+            background-image: -moz-linear-gradient(135deg, #b122e6 0%, #ff63de 100%);
+            background-image: -webkit-linear-gradient(135deg, #b122e6 0%, #ff63de 100%);
+            background-image: -ms-linear-gradient(135deg, #b122e6 0%, #ff63de 100%);
+            box-shadow: 0px 19px 56px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            font-size: 18px;
+            color: #c4cbf9;
+            border: none;
+            padding: 5px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        @media (max-width: 991px) {
+            .check-number-form .number-list-wrapper .number-list input {
+                margin-right: 15px;
+            }
+        }
+
+        @media (max-width: 1199px) {
+            .check-number-form button.cmn-btn {
+                padding: 12px 30px;
+            }
+        }
+
+        .check-number-form .form-control {
+            min-height: 48px;
+            background-color: #392ba6;
+            border: none;
+            color: #ffffff;
+            padding: 10px 30px;
+            border-radius: 999px;
+            -webkit-border-radius: 999px;
+            -moz-border-radius: 999px;
+            -ms-border-radius: 999px;
+            -o-border-radius: 999px;
+        }
+
+            .check-number-form .form-control::-webkit-input-placeholder {
+                color: #897edb;
+            }
+
+            .check-number-form .form-control::-moz-placeholder {
+                color: #897edb;
+            }
+
+            .check-number-form .form-control:-ms-input-placeholder {
+                color: #897edb;
+            }
+
+            .check-number-form .form-control:-moz-placeholder {
+                color: #897edb;
+            }
+
+        .check-number-form .nice-select {
+            min-height: 48px;
+            background-color: #392ba6;
+            border: none;
+            border-radius: 999px;
+            -webkit-border-radius: 999px;
+            -moz-border-radius: 999px;
+            -ms-border-radius: 999px;
+            -o-border-radius: 999px;
+            padding: 0 30px;
+        }
+
+            .check-number-form .nice-select::after {
+                border-bottom: 1px solid #9fa2e4;
+                border-right: 1px solid #9fa2e4;
+                width: 10px;
+                height: 10px;
+                right: 30px;
+                top: 43%;
+            }
+
+            .check-number-form .nice-select .current {
+                color: #897edb;
+            }
+
+            .check-number-form .nice-select .list {
+                background-image: -moz-linear-gradient(7deg, #ec1379 0%, #6c0092 100%);
+                background-image: -webkit-linear-gradient(7deg, #ec1379 0%, #6c0092 100%);
+                background-image: -ms-linear-gradient(7deg, #ec1379 0%, #6c0092 100%);
+            }
+
+            .check-number-form .nice-select .option {
+                font-weight: 400;
+            }
+
+                .check-number-form .nice-select .option.selected, .check-number-form .nice-select .option.focus, .check-number-form .nice-select .option:hover {
+                    background-color: rgba(0, 0, 0, 0.1);
+                    font-weight: 600;
+                    color: #ffffff;
+                }
+
+        .winner-card {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            background-image: -moz-linear-gradient(90deg, #c165dd 0%, #5c27fe 100%);
+            background-image: -webkit-linear-gradient(90deg, #c165dd 0%, #5c27fe 100%);
+            background-image: -ms-linear-gradient(90deg, #c165dd 0%, #5c27fe 100%);
+        }
+
+        .winner-card__thumb {
+            padding: 30px 10px;
+            width: 30%;
+            background-image: -moz-linear-gradient(90deg, #e82a7a 0%, #360354 100%);
+            background-image: -webkit-linear-gradient(90deg, #e82a7a 0%, #360354 100%);
+            background-image: -ms-linear-gradient(90deg, #e82a7a 0%, #360354 100%);
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__thumb {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .winner-card__content {
+            width: 70%;
+            position: relative;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content {
+                width: 100%;
+            }
+        }
+
+        .winner-card__content .winner-thumb {
+            position: absolute;
+            top: 50%;
+            left: -46px;
+            width: 86px;
+            height: 86px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            overflow: hidden;
+            margin-top: -43px;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .winner-thumb {
+                top: 0;
+                left: 50%;
+                margin-left: -43px;
+            }
+        }
+
+        .winner-card__content .content-top {
+            padding: 30px 30px 30px 50px;
+            border-bottom: 1px solid #c4a1f8;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .content-top {
+                padding: 65px 20px 20px 20px;
+            }
+        }
+
+        .winner-card__content .content-top .left {
+            width: 50%;
+            padding-right: 50px;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .content-top .left {
+                width: 100%;
+                text-align: center;
+                padding-right: 0;
+            }
+        }
+
+        .winner-card__content .content-top .right {
+            width: 50%;
+            text-align: center;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .content-top .right {
+                width: 100%;
+                text-align: center;
+                margin-top: 15px;
+            }
+        }
+
+        .winner-card__content .content-top .right span {
+            color: #27ff5a;
+        }
+
+        .winner-card__content .content-bottom {
+            padding: 30px 30px 30px 50px;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .content-bottom {
+                text-align: center;
+                padding: 20px;
+            }
+        }
+
+        .winner-card__content .content-bottom .number-list-wrapper {
+            width: 75%;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .content-bottom .number-list-wrapper {
+                width: 100%;
+            }
+        }
+
+        .winner-card__content .content-bottom .number-list {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-right: 30px;
+        }
+
+        @media (max-width: 1199px) {
+            .winner-card__content .content-bottom .number-list {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .content-bottom .number-list {
+                justify-content: center;
+            }
+        }
+
+        .winner-card__content .content-bottom .number-list li, .winner-card__content .content-bottom .number-list input {
+            width: 36px;
+            min-height: 36px;
+            height: 36px;
+            background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+            background-image: -webkit-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+            background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+            box-shadow: 0px 17px 40px 0px rgba(243, 42, 126, 0.35);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            font-size: 20px;
+            color: #ffffff;
+            border: none;
+            padding: 2px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .content-bottom .number-list li, .winner-card__content .content-bottom .number-list input {
+                margin-right: 15px;
+            }
+        }
+
+        .winner-card__content .content-bottom .right {
+            width: 25%;
+            text-align: center;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .content-bottom .right {
+                width: 100%;
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                align-items: center;
+                margin-top: 15px;
+                justify-content: center;
+            }
+        }
+
+        .winner-card__content .content-bottom .right p {
+            color: #ffffff;
+        }
+
+        .winner-card__content .content-bottom .right .contest-num {
+            color: #ffffff;
+            font-size: 28px;
+        }
+
+        @media (max-width: 767px) {
+            .winner-card__content .content-bottom .right .contest-num {
+                margin-left: 15px;
+            }
+        }
+
+        .winner-tab-nav {
+            border-bottom: 1px solid #2d246d;
+        }
+
+        @media (max-width: 575px) {
+            .winner-tab-nav {
+                justify-content: center;
+            }
+        }
+
+        .winner-tab-nav li {
+            width: calc(100% / 5);
+            text-align: center;
+        }
+
+        @media (max-width: 575px) {
+            .winner-tab-nav li {
+                width: auto;
+            }
+        }
+
+        .winner-tab-nav li a {
+            background-color: transparent;
+            border-color: transparent !important;
+            border-bottom: 4px solid transparent;
+        }
+
+            .winner-tab-nav li a.active, .winner-tab-nav li a:hover {
+                background-color: transparent !important;
+                border-color: transparent !important;
+                border-bottom: 4px solid #ff5800 !important;
+            }
+
+            .winner-tab-nav li a .icon-thumb {
+                height: 75px;
+                position: relative;
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+
+        @media (max-width: 575px) {
+            .winner-tab-nav li a .icon-thumb {
+                width: 50px;
+                height: 50px;
+                margin: auto;
+            }
+        }
+
+        .winner-tab-nav li a .icon-thumb::before {
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            background-color: rgba(75, 61, 186, 0.2);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            margin-top: -40px;
+            margin-left: -40px;
+        }
+
+        @media (max-width: 575px) {
+            .winner-tab-nav li a .icon-thumb::before {
+                width: 40px;
+                height: 40px;
+                margin-top: -20px;
+                margin-left: -20px;
+            }
+        }
+
+        .winner-tab-nav li a span {
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 20px;
+            color: #ffffff;
+            padding-bottom: 10px;
+        }
+
+        @media (max-width: 991px) {
+            .winner-tab-nav li a span {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .winner-tab-nav li a span {
+                font-size: 14px;
+            }
+        }
+
+        /* latest winner section css end */
+    </style>
+</head>
+<body id="">
+    <div class="slim-header">
+        <div class="container">
+            <div class="slim-header-left">
+                <!--<h2 class="slim-logo"><a href="/Admin"><img style=" max-width: 150px; max-height: 52px; position: relative; top: 2px;" src="../content/img/newlogo-light.png" class="logo" alt="" /><span></span></a></h2>-->
+                <h2 class="slim-logo"><a href="#">Lottery Admin<span>.</span></a></h2>
+
+
+            </div><!-- slim-header-left -->
+            <div class="slim-header-right">
+
+                <div class="dropdown dropdown-c">
+                    <a href="#" class="logged-user" data-toggle="dropdown">
+                        <img src="http://via.placeholder.com//500x500" alt="">
+                        <span>Admin</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <nav class="nav">
+                            <a href="#" class="nav-link"><i class="icon ion-forward"></i> Sign Out</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slim-navbar">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Admin/Index.html">
+                        <i class="icon ion-ios-home-outline"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                </li>
+                <!--<li class="nav-item with-sub">
+                <a class="nav-link" href="#" data-toggle="dropdown">
+                    <i class="icon ion-grid"></i>
+                    <span>Property</span>
+                </a>
+                <div class="sub-item">
+                    <ul>
+                        <li><a href="/Admin/AllProperty">All Property</a></li>
+                        <li><a href="/Admin/AddProperty">Add Property</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item with-sub">
+                <a class="nav-link" href="#">
+                    <i class="icon ion-ios-person-outline"></i>
+                    <span>Broker</span>
+                </a>
+                <div class="sub-item">
+                    <ul>
+                        <li><a href="/Admin/AllBroker">All Broker</a></li>
+                        <li><a href="/Admin/AddBroker">Add Broker</a></li>
+
+                    </ul>
+                </div>-->
+                <!-- sub-item -->
+                <!--</li>
+            <li class="nav-item with-sub">
+                <a class="nav-link" href="#">
+                    <i class="icon ion-ios-person-outline"></i>
+                    <span>Owner</span>
+                </a>
+                <div class="sub-item">
+                    <ul>
+                        <li><a href="/Admin/AllOwner">All Owner</a></li>
+                        <li><a href="/Admin/AddOwner">Add Owner</a></li>
+
+                    </ul>
+                </div>
+            </li>-->
+                <li class="nav-item with-sub">
+                    <a class="nav-link" href="#" data-toggle="dropdown">
+                        <i class="icon ion-ios-person-outline"></i>
+                        <span>User</span>
+                    </a>
+                    <div class="sub-item">
+                        <ul>
+
+                            <li><a href="/Admin/AllUser.html">All User</a></li>
+                            <li><a href="/Admin/AddUser.html">Add User</a></li>
+
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Winner.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Winner</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Payment.html">
+                        <i class="icon fa fa-inr" style="font-size:19px"></i>
+                        <span>Payment</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Lottery.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Lottery</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Profile.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Profile</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Enquiry.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Enquiry</span>
+                    </a>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="slim-mainpanel">
+        <!--@RenderBody()-->
+        <div class="container">
+            <div class="slim-pageheader">
+                <ol class="breadcrumb slim-breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Admin">Admin</a></li>
+
+                    <li class="breadcrumb-item active" aria-current="page">Winner Users</li>
+                </ol>
+                <h6 class="slim-pagetitle">Winner Users</h6>
+            </div>
+
+
+
+            <div class="row row-sm mg-t-20">
+                <div class="col-lg-4 mb-30">
+                    <div class="number-check-wrapper">
+                        <h3 class="title" style=" font-size: 24px; color: #ffffff;">Check My Numbers</h3>
+                        <p style=" font-size: 18px; color: #ffffff;">Are you holding on to a winning ticket? Here's an easy way to find out.</p>
+                        <form class="check-number-form">
+                            <input type="tel" class="form-control mt-30 mb-30" name="check-number1" id="check-number1" placeholder="Enter Contest No">
+                            <div class="number-list-wrapper">
+                                
+                                <div class="text-center mt-100">
+                                    <button type="submit" class="cmn-btn">check my numbers</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-8 mb-30">
+                    <div class="winner-card mb-30" style="margin-bottom: 30px;">
+                        <div class="winner-card__thumb">
+                            <img src="../assets/images/win-car/6.png" alt="image">
+                        </div>
+                        <div class="winner-card__content">
+                            <div class="winner-thumb"><img src="../assets/images/winner/1.png" alt="image"></div>
+                            <div class="content-top">
+                                <div class="left">
+                                    <h5 style="font-size: 20px; color: #ffffff;">The Breeze Zodiac IX</h5>
+                                </div>
+                                <div class="right">
+                                    <span>Draw took place on</span>
+                                    <p>Saturday April 20, 2020</p>
+                                </div>
+                            </div>
+                            <div class="content-bottom">
+                                <div class="number-list-wrapper">
+                                    <p style="font-size: 18px; color: #c4cbf9;">Winning Numbers:</p>
+                                    <ul class="number-list mt-2" style="list-style-type: none;">
+                                        <li>11</li>
+                                    </ul><!-- number-list end -->
+                                </div>
+                                <div class="right">
+                                    <p>Contest No:</p>
+                                    <span class="contest-num">B2T</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="winner-card mb-30" style="margin-bottom: 30px;">
+                        <div class="winner-card__thumb">
+                            <img src="../assets/images/win-car/6.png" alt="image">
+                        </div>
+                        <div class="winner-card__content">
+                            <div class="winner-thumb"><img src="../assets/images/winner/1.png" alt="image"></div>
+                            <div class="content-top">
+                                <div class="left">
+                                    <h5 style="font-size: 20px; color: #ffffff;">The Breeze Zodiac IX</h5>
+                                </div>
+                                <div class="right">
+                                    <span>Draw took place on</span>
+                                    <p>Saturday April 20, 2020</p>
+                                </div>
+                            </div>
+                            <div class="content-bottom">
+                                <div class="number-list-wrapper">
+                                    <p style="font-size: 18px; color: #c4cbf9;">Winning Numbers:</p>
+                                    <ul class="number-list mt-2" style="list-style-type: none;">
+                                        <li>11</li>
+                                    </ul><!-- number-list end -->
+                                </div>
+                                <div class="right">
+                                    <p>Contest No:</p>
+                                    <span class="contest-num">B2T</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="winner-card mb-30" style="margin-bottom: 30px;">
+                        <div class="winner-card__thumb">
+                            <img src="../assets/images/win-car/6.png" alt="image">
+                        </div>
+                        <div class="winner-card__content">
+                            <div class="winner-thumb"><img src="../assets/images/winner/1.png" alt="image"></div>
+                            <div class="content-top">
+                                <div class="left">
+                                    <h5 style="font-size: 20px; color: #ffffff;">The Breeze Zodiac IX</h5>
+                                </div>
+                                <div class="right">
+                                    <span>Draw took place on</span>
+                                    <p>Saturday April 20, 2020</p>
+                                </div>
+                            </div>
+                            <div class="content-bottom">
+                                <div class="number-list-wrapper">
+                                    <p style="font-size: 18px; color: #c4cbf9;">Winning Numbers:</p>
+                                    <ul class="number-list mt-2" style="list-style-type: none;">
+                                        <li>11</li>
+                                    </ul><!-- number-list end -->
+                                </div>
+                                <div class="right">
+                                    <p>Contest No:</p>
+                                    <span class="contest-num">B2T</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="winner-card mb-30" style="margin-bottom: 30px;">
+                        <div class="winner-card__thumb">
+                            <img src="../assets/images/win-car/6.png" alt="image">
+                        </div>
+                        <div class="winner-card__content">
+                            <div class="winner-thumb"><img src="../assets/images/winner/1.png" alt="image"></div>
+                            <div class="content-top">
+                                <div class="left">
+                                    <h5 style="font-size: 20px; color: #ffffff;">The Breeze Zodiac IX</h5>
+                                </div>
+                                <div class="right">
+                                    <span>Draw took place on</span>
+                                    <p>Saturday April 20, 2020</p>
+                                </div>
+                            </div>
+                            <div class="content-bottom">
+                                <div class="number-list-wrapper">
+                                    <p style="font-size: 18px; color: #c4cbf9;">Winning Numbers:</p>
+                                    <ul class="number-list mt-2" style="list-style-type: none;">
+                                        <li>11</li>
+                                    </ul><!-- number-list end -->
+                                </div>
+                                <div class="right">
+                                    <p>Contest No:</p>
+                                    <span class="contest-num">B2T</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="winner-card mb-30" style="margin-bottom: 30px;">
+                        <div class="winner-card__thumb">
+                            <img src="../assets/images/win-car/6.png" alt="image">
+                        </div>
+                        <div class="winner-card__content">
+                            <div class="winner-thumb"><img src="../assets/images/winner/1.png" alt="image"></div>
+                            <div class="content-top">
+                                <div class="left">
+                                    <h5 style="font-size: 20px; color: #ffffff;">The Breeze Zodiac IX</h5>
+                                </div>
+                                <div class="right">
+                                    <span>Draw took place on</span>
+                                    <p>Saturday April 20, 2020</p>
+                                </div>
+                            </div>
+                            <div class="content-bottom">
+                                <div class="number-list-wrapper">
+                                    <p style="font-size: 18px; color: #c4cbf9;">Winning Numbers:</p>
+                                    <ul class="number-list mt-2" style="list-style-type: none;">
+                                        <li>11</li>
+                                    </ul><!-- number-list end -->
+                                </div>
+                                <div class="right">
+                                    <p>Contest No:</p>
+                                    <span class="contest-num">B2T</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="winner-card mb-30" style="margin-bottom: 30px;">
+                        <div class="winner-card__thumb">
+                            <img src="../assets/images/win-car/6.png" alt="image">
+                        </div>
+                        <div class="winner-card__content">
+                            <div class="winner-thumb"><img src="../assets/images/winner/1.png" alt="image"></div>
+                            <div class="content-top">
+                                <div class="left">
+                                    <h5 style="font-size: 20px; color: #ffffff;">The Breeze Zodiac IX</h5>
+                                </div>
+                                <div class="right">
+                                    <span>Draw took place on</span>
+                                    <p>Saturday April 20, 2020</p>
+                                </div>
+                            </div>
+                            <div class="content-bottom">
+                                <div class="number-list-wrapper">
+                                    <p style="font-size: 18px; color: #c4cbf9;">Winning Numbers:</p>
+                                    <ul class="number-list mt-2" style="list-style-type: none;">
+                                        <li>11</li>
+                                    </ul><!-- number-list end -->
+                                </div>
+                                <div class="right">
+                                    <p>Contest No:</p>
+                                    <span class="contest-num">B2T</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-grp">
+                        <a href="winner.html" class="btn-border">browse more</a>
+                    </div>
+                </div>
+            </div><!-- row -->
+
+
+
+
+        </div>
+    </div>
+    <div class="slim-footer">
+        <div class="container">
+            <p>Copyright 2021 &copy; All Rights Reserved</p>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            'use strict';
+
+            $('#datatable1').DataTable({
+                responsive: true,
+                bLengthChange: false,
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                    lengthMenu: '_MENU_ items/page',
+                }
+            });
+
+
+        });
+    </script>
+    <script src="../assets/lib/popper.js/js/popper.js"></script>
+    <script src="../assets/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/lib/jquery.cookie/js/jquery.cookie.js"></script>
+    <script src="../assets/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="../assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
+    <script src="../assets/lib/select2/js/select2.min.js"></script>
+    <script src="../assets/lib/select2/js/select2.full.min.js"></script>
+    <script src="../assets/lib/moment/js/moment.js"></script>
+    <script src="../assets/lib/d3/js/d3.js"></script>
+    <script src="../assets/lib/rickshaw/js/rickshaw.min.js"></script>
+    <script src="../assets/lib/gmaps/js/gmaps.js"></script>
+    <script src="../assets/lib/peity/js/jquery.peity.js"></script>
+    <script src="../assets/js/slim.js"></script>
+    <script src="../assets/js/ResizeSensor.js"></script>
+    <script src="../assets/js/widgets.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>

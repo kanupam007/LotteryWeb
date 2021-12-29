@@ -1,0 +1,17 @@
+﻿
+<form action="/user-info.html" method="post">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="rzp_live_IRfLjXLJbJ5GIX"
+            data-amount="100000"
+            data-name="Razorpay"
+            data-description=" Lottery Ticket"
+            data-image="https://razorpay.com/favicon.png"
+            data-prefill.name="@Request.QueryString["Name"]"
+            data-prefill.email="@Request.QueryString["Email"]"
+            data-prefill.contact="@Request.QueryString["Phone"]"
+            data-theme.color="#F37254"></script>
+    <input type="hidden" value="Hidden Element" name="hidden">
+</form>
+<script>
+    $('.razorpay-payment-button').click();
+</script>

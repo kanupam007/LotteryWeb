@@ -1,0 +1,85 @@
+﻿@using LotteryWeb.Models.DBOperations
+@{
+    var UserData = UserOperations.GetUserData();
+}
+@{
+    ViewBag.Title = "Contest";
+}
+<div class="inner-hero-section style--two">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="page-list">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#0">Lottery</a></li>
+                    <li><a href="#0">Contest No: B2T</a></li>
+                    <li class="active">Pick your Lottery Number</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="pb-120 mt-minus-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="lottery-wrapper">
+                    <h2 class="lottery-wrapper__title">Choose your Tickets</h2>
+                    <p>Choose your 7 luckiest numbers by clicking ( 5 numbers + 2 Lucky Stars).</p>
+                    <div class="row mt-50 mb-none-30">
+                        <div class="col-lg-12 mb-30">
+                            <div class="lottery-single">
+                                <button class="lottery-single__close"><i class="las la-times"></i></button>
+                                <div class="lottery-single__header">
+                                    <span class="titcket-number">Ticket #1</span>
+                                    <ul class="lottery-single__selected-number">
+                                        <li>00</li>
+
+                                    </ul>
+                                </div>
+                                <div class="lottery-single__body">
+                                    <ul class="lottery-single__number" id="div1"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    @*<div class="lottery-wrapper__btn">
+                            <a href="#0" class="btn-border text-white">Add Tickets</a>
+                        </div>*@
+                </div>
+            </div>
+            <div class="col-lg-12 mt-50">
+                <div class="buy-lottery-ticket">
+                    <div class="left">
+                        <div class="sub-total-price">
+                            <p>Ticket Price (1 tickets X 1000)</p>
+                            <span>₹1000</span>
+                        </div>
+
+                    </div>
+                    <div class="right"><a style="cursor:pointer;" onclick="MakePayment()" class="cmn-btn">buy tickets</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $('#div1').empty();
+    $('.razorpay-payment-button').hide();
+    for (var i = 1; i <= 1000; i++) {
+        $('#div1').append("<li>" + i + "</li>");
+    }
+    function MakePayment() {
+        if ($('.lottery-single__number li.active').length > 0) {
+            window.location.href = '/Checkout';
+        }
+        else {
+            ShowAlert('Error','Please select atleast one lottery number','error')
+        }
+    }
+</script>

@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<!-- inner-hero-section start -->
+<div class="inner-hero-section">
+    <div class="bg-shape"><img src="~/Content/assets/images/elements/inner-hero-shape.png" alt="image"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="page-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#0">Lottery</a></li>
+                    <li><a href="#0">Contest No: B2T</a></li>
+                    <li><a href="#0">Pick your Lottery Number</a></li>
+                    <li class="active"><a href="#0">My Cart</a></li>
+                    <li class="active">Checkout</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- inner-hero-section end -->
+<!-- checkout section start -->
+<section class="pb-120 mt-minus-300">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="checkout-area">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="checkout-form-area">
+                                
+                                <div class="personal-details">
+                                    <h3 class="title">Share your Contact  Details </h3>
+                                    <div class="personal-details-form">
+                                        <div class="form-row">
+                                            <div class="form-group col-lg-6">
+                                                <input type="text" placeholder="First Name" id="FirstName" maxlength="15">
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <input type="text" placeholder="Last Name" id="LastName" maxlength="15">
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <input type="email" placeholder="Enter your Mail" id="Email" maxlength="35">
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <input type="text" placeholder="Enter your Phone Number" id="Phone" maxlength="15">
+                                            </div>
+                                            <div class="form-group col-lg-8">
+                                                <button type="button" class="cmn-btn" onclick="MakePayment()">Make Payment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 mt-lg-0 mt-4">
+                            <div class="checkout-wrapper">
+                                <div class="checkout-wrapper__header">
+                                    <h3>Checkout</h3>
+                                </div>
+                                <div class="checkout-wrapper__body">
+                                    <ul class="price">
+                                        <li>
+                                            <div class="left">
+                                                <h4 class="caption">Ticket Price</h4>
+                                                <span>(1 tickets X ₹ 1000)</span>
+                                            </div>
+                                            <div class="right">
+                                                <span class="price">₹ 1000</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="left">
+                                                <h4 class="caption">Total</h4>
+                                            </div>
+                                            <div class="right">
+                                                <span class="price">₹ 1000</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- checkout-wrapper end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="payment">
+    <form action="/user-info.html" method="post">
+        <script src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key="rzp_live_IRfLjXLJbJ5GIX"
+                data-amount="100000"
+                data-name="Razorpay"
+                data-description=" Lottery Ticket"
+                data-image="https://razorpay.com/favicon.png"
+                data-prefill.name="@(Convert.ToString(Request.QueryString["Name"])==null?"Test":Request.QueryString["Name"])"
+            data-prefill.email="@(Convert.ToString(Request.QueryString["Email"])==null?"Test@gmail.com":Request.QueryString["Email"])"
+            data-prefill.contact="@(Convert.ToString(Request.QueryString["Phone"])==null?"87878787":Request.QueryString["Phone"])"
+                data-theme.color="#F37254"></script>
+        <input type="hidden" value="Hidden Element" name="hidden">
+    </form>
+</div>
+<!-- checkout section end -->
+<script>
+    if ('@Request.QueryString["Name"]' != '') {
+        window.history.pushState({ path: window.location.origin + window.location.pathname }, '', window.location.origin + window.location.pathname);
+        $('.razorpay-payment-button').click();
+    }
+    function MakePayment() {
+        if (ValidateFormData()) {
+            window.location.href = "/Checkout?Name=" + $('#FirstName').val() + "&Email=" + $('#Email').val() + "&Phone=" + $('#Phone').val();
+        }
+        
+    }
+    function ValidateFormData() {
+        var valid = true;
+        if ($('#FirstName').val() == '') {
+            valid = false;
+            ShowAlert('Error', 'First Name should not be empty', 'error')
+        }
+        else if ($('#Email').val() == '') {
+            valid = false;
+            ShowAlert('Error', 'Email should not be empty', 'error')
+        }
+        else if ($('#Phone').val() == '') {
+            valid = false;
+            ShowAlert('Error', 'Phone should not be empty', 'error')
+        }
+        return valid;
+    }
+</script>

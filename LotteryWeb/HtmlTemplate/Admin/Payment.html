@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<link rel="shortcut icon" href="/content/img/favicon.png">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Lottery-Admin</title>
+    <link rel="stylesheet" href="../assets/lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../assets/lib/Ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="../assets/lib/SpinKit/css/spinkit.css">
+    <link rel="stylesheet" href="../assets/lib/datatables/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="../assets/lib/jqvmap/css/jqvmap.min.css">
+    <link rel="stylesheet" href="../assets/lib/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../assets/lib/chartist/css/chartist.css">
+    <link rel="stylesheet" href="../assets/lib/rickshaw/css/rickshaw.min.css">
+    <link rel="stylesheet" href="../assets/lib/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../assets/css/slim.css">
+    <script src="../assets/lib/jquery/js/jquery.js"></script>
+
+</head>
+<body id="">
+    <div class="slim-header">
+        <div class="container">
+            <div class="slim-header-left">
+                <!--<h2 class="slim-logo"><a href="/Admin"><img style=" max-width: 150px; max-height: 52px; position: relative; top: 2px;" src="~/content/img/newlogo-light.png" class="logo" alt="" /><span></span></a></h2>-->
+                <h2 class="slim-logo"><a href="#">Lottery Admin<span>.</span></a></h2>
+
+
+            </div><!-- slim-header-left -->
+            <div class="slim-header-right">
+
+                <div class="dropdown dropdown-c">
+                    <a href="#" class="logged-user" data-toggle="dropdown">
+                        <img src="http://via.placeholder.com//500x500" alt="">
+                        <span>Admin</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <nav class="nav">
+                            <a href="#" class="nav-link"><i class="icon ion-forward"></i> Sign Out</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slim-navbar">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Admin/Index.html">
+                        <i class="icon ion-ios-home-outline"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                </li>
+                <!--<li class="nav-item with-sub">
+                <a class="nav-link" href="#" data-toggle="dropdown">
+                    <i class="icon ion-grid"></i>
+                    <span>Property</span>
+                </a>
+                <div class="sub-item">
+                    <ul>
+                        <li><a href="/Admin/AllProperty">All Property</a></li>
+                        <li><a href="/Admin/AddProperty">Add Property</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item with-sub">
+                <a class="nav-link" href="#">
+                    <i class="icon ion-ios-person-outline"></i>
+                    <span>Broker</span>
+                </a>
+                <div class="sub-item">
+                    <ul>
+                        <li><a href="/Admin/AllBroker">All Broker</a></li>
+                        <li><a href="/Admin/AddBroker">Add Broker</a></li>
+
+                    </ul>
+                </div>-->
+                <!-- sub-item -->
+                <!--</li>
+            <li class="nav-item with-sub">
+                <a class="nav-link" href="#">
+                    <i class="icon ion-ios-person-outline"></i>
+                    <span>Owner</span>
+                </a>
+                <div class="sub-item">
+                    <ul>
+                        <li><a href="/Admin/AllOwner">All Owner</a></li>
+                        <li><a href="/Admin/AddOwner">Add Owner</a></li>
+
+                    </ul>
+                </div>
+            </li>-->
+                <li class="nav-item with-sub">
+                    <a class="nav-link" href="#" data-toggle="dropdown">
+                        <i class="icon ion-ios-person-outline"></i>
+                        <span>User</span>
+                    </a>
+                    <div class="sub-item">
+                        <ul>
+
+                            <li><a href="/Admin/AllUser.html">All User</a></li>
+                            <li><a href="/Admin/AddUser.html">Add User</a></li>
+
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Winner.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Winner</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Payment.html">
+                        <i class="icon fa fa-inr" style="font-size:19px"></i>
+                        <span>Payment</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Lottery.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Lottery</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Profile.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Profile</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Enquiry.html">
+                        <i class="icon ion-ios-person-outline" style="font-size:19px"></i>
+                        <span>Enquiry</span>
+                    </a>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="slim-mainpanel">
+        <!--@RenderBody()-->
+        <div class="container">
+            <div class="slim-pageheader">
+                <ol class="breadcrumb slim-breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Admin">Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Payment Details</li>
+                </ol>
+                <h6 class="slim-pagetitle">Payment Details</h6>
+            </div>
+
+            <div class="section-wrapper">
+                <label class="section-title">All Payment</label>
+                <div class="table-wrapper">
+                    <table id="datatable1" class="table display responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th class="wd-15p">Date</th>
+                                <th class="wd-10p">Name</th>
+                                <th class="wd-15p">Description</th>
+                                <th class="wd-15p">Payment Method</th>
+                                <th class="wd-20p">Amount</th>
+                                <th class="wd-15p">Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11th June 2022 </td>
+                                <td>Tanmayee</td>
+                                <td>N.A</td>
+                                <td>Credit Card</td>
+                                <td>100$</td>
+                                <td><span style="color:orangered">Pending</span></td>
+
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="slim-footer">
+        <div class="container">
+            <p>Copyright 2021 &copy; All Rights Reserved</p>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            'use strict';
+
+            $('#datatable1').DataTable({
+                responsive: true,
+                bLengthChange: false,
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                    lengthMenu: '_MENU_ items/page',
+                }
+            });
+
+
+        });
+    </script>
+    <script src="../assets/lib/popper.js/js/popper.js"></script>
+    <script src="../assets/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/lib/jquery.cookie/js/jquery.cookie.js"></script>
+    <script src="../assets/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="../assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
+    <script src="../assets/lib/select2/js/select2.min.js"></script>
+    <script src="../assets/lib/select2/js/select2.full.min.js"></script>
+    <script src="../assets/lib/moment/js/moment.js"></script>
+    <script src="../assets/lib/d3/js/d3.js"></script>
+    <script src="../assets/lib/rickshaw/js/rickshaw.min.js"></script>
+    <script src="../assets/lib/gmaps/js/gmaps.js"></script>
+    <script src="../assets/lib/peity/js/jquery.peity.js"></script>
+    <script src="../assets/js/slim.js"></script>
+    <script src="../assets/js/ResizeSensor.js"></script>
+    <script src="../assets/js/widgets.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
