@@ -1,0 +1,77 @@
+﻿@using LotteryWeb.Models.DBOperations
+@{
+    ViewBag.Title = "Transactions";
+    var data = UserOperations.GetUsers().Where(x=>x.Email!="admin").ToList();
+    
+}
+<div class="inner-hero-section style--five">
+</div>
+<div class="mt-minus-150 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                @Html.Partial("_AdminSide")
+            </div>
+            <div class="col-lg-8 mt-lg-0 mt-4">
+                
+                <div class="all-transaction">
+                    <div class="all-transaction__header">
+                        <h3 class="title">All Users</h3>
+                        
+                    </div>
+                    @if (data != null && data.Count > 0)
+                    {
+                        <div class="table-responsive-xl">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Balance</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in data)
+                                    {
+                                    <tr>
+                                        <td>
+                                            <span>@item.Name</span>
+                                        </td>
+                                        <td>
+                                            <span>@item.Email</span>
+                                        </td>
+                                        <td>
+                                            <span>@item.Phone</span>
+                                        </td>
+                                        <td>
+                                            <span>@item.Balance</span>
+                                        </td>
+                                        @*<td>
+            <div class="status-pending"><i class="fas fa-ellipsis-h"></i></div>
+        </td>*@
+                                        <td>
+                                            <div class="status-success"><i class="fas fa-check-circle"></i></div>
+                                        </td>
+                                    </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="load-more">
+                            <button type="button">No Transactions Found </button>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

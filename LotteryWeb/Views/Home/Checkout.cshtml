@@ -91,7 +91,7 @@
     </div>
 </section>
 <div id="payment">
-    <form action="/user-info.html" method="post">
+    <form action="/SucessPay?ContestNo=@Convert.ToString(Request.QueryString["ContestNo"])&UserId=@LotteryWeb.Models.DBOperations.UserOperations.GetUserData().UserId" method="post">
         <script src="https://checkout.razorpay.com/v1/checkout.js"
                 data-key="rzp_live_IRfLjXLJbJ5GIX"
                 data-amount="100000"

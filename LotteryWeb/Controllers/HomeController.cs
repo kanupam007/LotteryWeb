@@ -3,6 +3,7 @@ using LotteryWeb.Models.UserModels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -45,8 +46,12 @@ namespace LotteryWeb.Controllers
             return View();
         }
         [Route("Checkout")]
-        public ActionResult Checkout()
+        public ActionResult Checkout(string ContestNo,string LotteryNum,string UserId)
         {
+            if(!string.IsNullOrEmpty(ContestNo))
+            {
+                UserOperations.CreateContest(Convert.ToInt64(UserId), Convert.ToInt32(LotteryNum), ContestNo);
+            }
             return View();
         }
         
@@ -57,6 +62,11 @@ namespace LotteryWeb.Controllers
         }
         [Route("Cookies-Policy")]
         public ActionResult Cookies()
+        {
+            return View();
+        }
+        [Route("Admin-Login")]
+        public ActionResult AdminLogin()
         {
             return View();
         }
@@ -93,15 +103,25 @@ namespace LotteryWeb.Controllers
             return Json(UserOperations.CheckUser(Obj));
         }
         #endregion
-        
-        public ActionResult SucessPay()
+        [Route("SucessPay")]
+        public ActionResult SucessPay(string ContestNo,string UserId)
         {
+            string Token = null;
             if (Convert.ToString(Request.Form["razorpay_payment_id"]) != null)
             {
-                var Token = Request.Form["razorpay_payment_id"].ToString();
-
+                Token =Convert.ToString(Request.Form["razorpay_payment_id"]);
             }
-            return null;
+            Transactions Obj = new Transactions();
+            Obj.UserId =Convert.ToInt64(UserId);
+            Obj.Amount = Convert.ToDecimal(ConfigurationManager.AppSettings["BookingAmount"]);
+            Obj.Description = "Contest No.: " + ContestNo;
+            Obj.Detail = "LOTTERY PURCHASE";
+            Obj.IsDebit = true;
+            Obj.RPId = Token;
+            Obj.Type = "RAZOR PAY";
+            Obj.IsActive = string.IsNullOrEmpty(Token) ? false : true;
+            UserOperations.CreateTransaction(Obj);
+            return Redirect("/Transactions");
         }
     }
 }

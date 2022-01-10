@@ -76,7 +76,10 @@
     }
     function MakePayment() {
         if ($('.lottery-single__number li.active').length > 0) {
-            window.location.href = '/Checkout';
+            var lotterynum = $('.lottery-single__number li.active').text();
+            var ContestNum = new Date().getDate().toString() + new Date().getMonth().toString() + new Date().getFullYear().toString();
+            var UserId = '@UserData.UserId';
+            window.location.href = '/Checkout?ContestNo=' + ContestNum + '&LotteryNum=' + lotterynum + '&UserId=' + UserId;
         }
         else {
             ShowAlert('Error','Please select atleast one lottery number','error')

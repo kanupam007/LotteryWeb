@@ -1,51 +1,61 @@
 ﻿@using LotteryWeb.Models.DBOperations
+@using LotteryWeb.Models.UserModels
 @{
     var UserData = UserOperations.GetUserData();
+    UserData = UserData == null ? new Users() : UserData;
 }
 <header class="header" login="@(UserData!=null&&UserData.UserId>0?"y":"n")">
-    <div class="header__top">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-sm-6">
-                    <div class="left d-flex align-items-center">
-                        <a href="tel:65655655"><i class="las la-phone-volume"></i> Customer Support</a>
+    @if (UserData.Email != "admin")
+    {
+        <div class="header__top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="left d-flex align-items-center">
+                            <a href="tel:65655655"><i class="las la-phone-volume"></i> Customer Support</a>
 
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="right">
-                        <div class="product__cart">
-                            <span class="total__amount">1000.00</span>
                         </div>
-                        @if (UserData != null && UserData.UserId > 0)
-                        {
-                            <a href="/user-info.html" class="user__btn"><i class="las la-user"></i></a>
-                        }
-                        else
-                        {
-                            <a href="#0" class="user__btn" data-toggle="modal" data-target="#loginModal"><i class="las la-user"></i></a>
-                        }
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="right">
+                            <div class="product__cart">
+                                <span class="total__amount">0.00</span>
+                            </div>
+                            @if (UserData != null && UserData.UserId > 0)
+                            {
+                                <a href="/Personal-Info" class="user__btn"><i class="las la-user"></i></a>
+                            }
+                            else
+                            {
+                                <a href="#0" class="user__btn" data-toggle="modal" data-target="#loginModal"><i class="las la-user"></i></a>
+                            }
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+
     <div class="header__bottom">
         <div class="container">
             <nav class="navbar navbar-expand-xl p-0 align-items-center">
-                <a class="site-logo site-title" href="/"><img src="~/Content/assets/images/logo.png" alt="site-logo"><span class="logo-icon"><i class="flaticon-fire"></i></span></a>
-                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="menu-toggle"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav main-menu ml-auto">
-                        <li class="menu_has_children"><a href="/">Home</a></li>
-                        <li class="menu_has_children"><a style="cursor:pointer;" onclick="CheckLoginContest();">Contest</a></li>
-                        <li><a href="/About-Us">About Us</a></li>
-                        <li><a href="/Contact-Us">contact</a></li>
-                    </ul>
-                </div>
+                <a class="site-logo site-title" href="@(UserData.Email != "admin"?"/":"#")"><img src="~/Content/assets/images/logo.png" alt="site-logo"><span class="logo-icon"><i class="flaticon-fire"></i></span></a>
+                @if (UserData.Email != "admin")
+                {
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="menu-toggle"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav main-menu ml-auto">
+                            <li class="menu_has_children"><a href="/">Home</a></li>
+                            <li class="menu_has_children"><a style="cursor:pointer;" onclick="CheckLoginContest();">Contest</a></li>
+                            <li><a href="/About-Us">About Us</a></li>
+                            <li><a href="/Contact-Us">contact</a></li>
+                        </ul>
+                    </div>
+                }
+
             </nav>
         </div>
     </div>

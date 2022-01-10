@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminLogin</title>
+    <link rel="icon" type="image/png" href="~/Content/assets/images/favicon.png" sizes="16x16">
+    <link href="~/Content/Admin/HeaderCss.css" rel="stylesheet" />
+    <script src="~/Content/Admin/HeaderJS.js"></script>
+</head>
+<body>
+    <div class="signin-wrapper">
+        <div class="signin-box">
+            <h2 class="slim-logo"><a href="/">DreamsHit<span>.</span></a></h2>
+            <h2 class="signin-title-primary">Welcome back Admin!</h2>
+            <h3 class="signin-title-secondary">Sign in to continue.</h3>
+
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter your email" id="txtUserName">
+                <ul class="parsley-errors-list filled" id="parsley-txtUserName"><li class="parsley-required">This value is required.</li></ul>
+            </div>
+
+            <div class="form-group mg-b-50">
+                <input type="password" class="form-control" placeholder="Enter your password" id="txtPassword">
+                <ul class="parsley-errors-list filled" id="parsley-txtPassword"><li class="parsley-required">This value is required.</li></ul>
+            </div>
+
+            <button class="btn btn-primary btn-block btn-signin" id="btnsignin">Sign In</button>
+
+        </div>
+
+    </div>
+    <script src="~/Content/Admin/FooterJS.js"></script>
+    <script>
+        function ValidateSigninUser() {
+            var valid = true;
+            $('.filled').hide();
+            $('.form-control').removeClass('parsley-error');
+            if ($("#txtUserName").val() == "") {
+                valid = false;
+                FocusErrors('txtUserName');
+            }
+            if ($("#txtPassword").val() == "") {
+                valid = false;
+                FocusErrors('txtPassword');
+            }
+
+
+
+            return valid;
+        }
+        function FocusErrors(Id) {
+            $("#" + Id).val('');
+            $("#" + Id).focus();
+            $("#" + Id).addClass('parsley-error');
+            $('#parsley-' + Id).show();
+        }
+        $(document).on('click', '#btnsignin', function () {
+            if (ValidateSigninUser()) {
+                $(this).prop('disabled', true);
+                var temptext = $(this).text();
+                $(this).text('Processing...');
+
+                var json = {
+                    Email: $('#txtUserName').val(),
+                    Password: $('#txtPassword').val()
+                }
+                $.post('/Login', json, function (Response) {
+                    if (Response && $('#txtUserName').val()=="admin") {
+                        window.location.href = '/Admin-Personal-Info';
+                    }
+                    else {
+                        $('#login').modal('hide');
+                        $('#btnsignin').text(temptext);
+                        $('#btnsignin').prop('disabled', false);
+                        ShowAlert('Processing failed!', 'Login failed', 'error');
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</html>

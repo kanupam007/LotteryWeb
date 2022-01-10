@@ -103,7 +103,7 @@ $(document).on('click', '#btnsignin', function () {
             Password: $('#txtPassword').val(),
         }
         $.post('/Login', json, function (Response) {
-            if (Response.UserId>0) {
+            if (Response.UserId > 0 && $('#txtUserName').val()!='admin') {
                 location.reload();
             }
             else {

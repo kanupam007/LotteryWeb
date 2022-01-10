@@ -1,0 +1,66 @@
+﻿@using LotteryWeb.Models.DBOperations
+@{
+    ViewBag.Title = "MyTickets";
+    var data = UserOperations.GetAllContests();
+    var userdata = UserOperations.GetUsers();
+}
+
+<div class="inner-hero-section style--five">
+</div>
+<div class="mt-minus-150 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                @Html.Partial("_AdminSide")
+            </div>
+            <div class="col-lg-8 mt-lg-0 mt-4">
+
+                <div class="past-draw-wrapper">
+                    <h3 class="title">Past Draws</h3>
+                    @if (data != null && data.Count > 0)
+                    {
+                        <div class="table-responsive-lg">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Draw</th>
+                                        <th>Contest No</th>
+                                        <th>Result</th>
+                                        <th>User</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in data)
+                                    {
+                                        <tr>
+                                            <td><span class="date">@item.ContestDate.ToString("dd MMM yyyy")</span></td>
+                                            <td><span class="contest-no">DHT-@item.ContestNo</span></td>
+                                            <td>
+                                                <ul class="number-list">
+                                                    <li>@item.LotteryNo</li>
+                                                </ul>
+                                            </td>
+                                            <td><span>@userdata.Where(x => x.UserId == item.UserId).FirstOrDefault().Name</span> </td>
+                                            <td><span class="fail">@(item.ContestDate.ToString("dd MMM yyyy") != DateTime.Now.ToString("dd MMM yyyy") ? "No Win" : "In-Process") </span></td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="load-more">
+                            <button type="button">No Contests Found </button>
+                        </div>
+                    }
+
+                </div><!-- past-draw-wrapper end -->
+            </div>
+        </div>
+    </div>
+</div>
+

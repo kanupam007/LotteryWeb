@@ -1,0 +1,71 @@
+﻿@using LotteryWeb.Models.DBOperations
+@{ 
+    var data = UserOperations.GetUsers().Where(x => x.UserId == UserOperations.GetUserData().UserId).FirstOrDefault();
+}
+<div class="user-card">
+    <div class="avatar-upload">
+        <div class="obj-el"><img src="/content/assets/images/elements/team-obj.png" alt="image"></div>
+        <div class="avatar-edit">
+            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+            <label for="imageUpload"></label>
+        </div>
+        <div class="avatar-preview">
+            <div id="imagePreview" style="background-image: url(@data.Image);">
+            </div>
+        </div>
+    </div>
+    <h3 class="user-card__name">@data.Name</h3>
+    <span class="user-card__id">@data.Email</span>
+</div>
+<div class="user-action-card">
+    <ul class="user-action-list">
+        <li class=@(Request.RawUrl.Contains("My-Tickets")?"active":"")> <a href="/My-Tickets">My Tickets</a></li>
+        <li class=@(Request.RawUrl.Contains("Personal-Info")?"active":"")><a href="/Personal-Info">Personal Information</a></li>
+        <li class=@(Request.RawUrl.Contains("Transactions")?"active":"")><a href="/Transactions">Transactions</a></li>
+        <li><a href="/Contact-Us">Help Center</a></li>
+        <li><a href="/User/LogOut">Log Out</a></li>
+    </ul>
+</div>
+<script>
+    $(document).on('change', '#imageUpload', function () {
+
+        if (window.FormData !== undefined) {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+            var fileData = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                fileData.append(files[i].name, files[i]);
+            }
+
+            if (fileData != null) {
+                $.ajax({
+                    url: '/User/UpdateProfilePicture',
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    data: fileData,
+                    success: function (ImageList) {
+                        if (ImageList) {
+                            ShowAlertLoad('Updated', 'Profile Image Updated Successfully', 'success', location.href);
+                        }
+                        else {
+                            ShowAlert('Uploading Failed', 'video not uploading due to some error', 'error');
+                        }
+
+                    },
+                    error: function (err) {
+                        ShowAlert('Error!', err.statusText, 'error');
+                    }
+                });
+            }
+            else {
+                ShowAlert('video file not selected', 'Please select atleast one video', 'error');
+            }
+
+        }
+        else {
+            ShowAlert('Not Supported', 'FormData is not supported.', 'error');
+
+        }
+    });
+</script>

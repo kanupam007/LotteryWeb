@@ -1,0 +1,151 @@
+﻿@using LotteryWeb.Models.DBOperations
+@{
+    ViewBag.Title = "Index";
+    var data = UserOperations.GetUsers().Where(x=>x.UserId==UserOperations.GetUserData().UserId).FirstOrDefault();
+}
+<div class="inner-hero-section style--five">
+</div>
+
+<div class="mt-minus-150 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                
+                @Html.Partial("_UserSide")
+            </div>
+            <div class="col-lg-8 mt-lg-0 mt-5">
+                <div class="user-info-card">
+                    <div id="NameMain" class="Main-Info">
+                        <div class="user-info-card__header">
+                            <h3 class="user-info-card__title">Name</h3>
+                            <button type="button" onclick="$('#NameMain').hide();$('#NameUpdate').show();"><i class="far fa-edit"></i> Edit</button>
+                        </div>
+                        <ul class="user-info-card__list">
+                            <li>
+                                <span class="caption">Name</span>
+                                <span class="value" id="txtUDTName">@data.Name</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div id="NameUpdate"  style="display:none" class="Additional-Info">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Name <sup>*</sup></label>
+                                <input type="text" name="signup_name" id="UDTName" value="@data.Name">
+                                <span id="span-signup_email" class="error-message">This value is required.</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="button" class="cmn-btn w-30" onclick="UpdateProfile();">Update</button>
+                            <button type="button" onclick="Cancel();" class="cmn-btn w-30">Cancel</button>
+
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="user-info-card">
+                    <div id="AccountMain" class="Main-Info">
+                        <div class="user-info-card__header">
+                            <h3 class="user-info-card__title">Account Settings</h3>
+                        </div>
+                        <ul class="user-info-card__list">
+                            <li>
+                                <span class="caption">Email</span>
+                                <span class="value">@data.Email</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    
+
+
+                </div>
+                <div class="user-info-card">
+                    <div id="PhoneMain" class="Main-Info">
+                        <div class="user-info-card__header">
+                            <h3 class="user-info-card__title">Phone</h3>
+                            <button type="button" onclick="$('#PhoneMain').hide();$('#PhoneUpdate').show();"><i class="far fa-edit"></i> Edit</button>
+                        </div>
+                        <ul class="user-info-card__list">
+                            <li>
+                                <span class="caption">Phone</span>
+                                <span class="value" id="txtUDTPhone">@data.Phone</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div id="PhoneUpdate"  style="display:none" class="Additional-Info">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Phone <sup>*</sup></label>
+                                <input type="email" name="signup_name" id="UDTPhone" value="@data.Phone">
+                                <span id="span-signup_email" class="error-message">This value is required.</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="button" class="cmn-btn w-30" onclick="UpdateProfile();">Update</button>
+                            <button type="button" onclick="Cancel();" class="cmn-btn w-30">Cancel</button>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="user-info-card">
+                    <div id="AddressMain" class="Main-Info">
+                        <div class="user-info-card__header">
+                            <h3 class="user-info-card__title">Address</h3>
+                            <button type="button" onclick="$('#AddressMain').hide();$('#AddressUpdate').show();"><i class="far fa-edit"></i> Edit</button>
+                        </div>
+                        <ul class="user-info-card__list">
+                            <li>
+                                <span class="caption">Address</span>
+                                <span class="value" id="txtUDTAddress">@data.Address</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div id="AddressUpdate" style="display:none" class="Additional-Info">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Address <sup>*</sup></label>
+                                <textarea id="UDTAddress" >@data.Address</textarea>
+                                <span id="span-signup_email" class="error-message">This value is required.</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="button" onclick="UpdateProfile();" class="cmn-btn w-30">Update</button>
+                            <button type="button" onclick="Cancel();" class="cmn-btn w-30">Cancel</button>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function UpdateProfile() {
+        $.post('/User/UpdateProfile', { Name: $('#UDTName').val(), Phone: $('#UDTPhone').val(), Address: $('#UDTAddress').val(), Image: '@data.Image', UserId: parseInt('@data.UserId'), Balance: parseFloat('@data.Balance') }, function (res) {
+            if (res) {
+                ShowAlert('Updated', 'Profile Updated Successfully', 'success');
+                $('#txtUDTName').text($('#UDTName').val());
+                $('#txtUDTPhone').text($('#UDTPhone').val());
+                $('#txtUDTAddress').text($('#UDTAddress').val());
+            }
+            else {
+                ShowAlert('Updation Failed', 'Profile Updation Failed', 'error');
+            }
+            $('.Main-Info').show();
+            $('.Additional-Info').hide();
+       })
+    }
+    function Cancel() {
+        $('.Main-Info').show();
+        $('.Additional-Info').hide();
+    }
+</script>

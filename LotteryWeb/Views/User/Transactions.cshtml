@@ -1,0 +1,101 @@
+﻿@using LotteryWeb.Models.DBOperations
+@{
+    ViewBag.Title = "Transactions";
+    var data = UserOperations.GetAllTransactions();
+    if(data!=null)
+    {
+        data = data.Where(x => x.UserId == UserOperations.GetUserData().UserId).ToList();
+    }
+}
+<div class="inner-hero-section style--five">
+</div>
+<div class="mt-minus-150 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                @Html.Partial("_UserSide")
+            </div>
+            <div class="col-lg-8 mt-lg-0 mt-4">
+                <div class="transaction-balance-wrapper">
+                    <div class="left">
+                        <div class="transaction-balance">
+                            <h4 class="balance">₹ 0.00</h4>
+                            <span>Available Balance</span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        @*<a href="#0" class="transaction-action-btn">
+                            <img src="/content/assets/images/icon/transaction/1.png" alt="image">
+                            <span>Deposit</span>
+                        </a>*@
+                    </div>
+                </div><!-- transaction-balance-wrapper end -->
+                <div class="all-transaction">
+                    <div class="all-transaction__header">
+                        <h3 class="title">All Transactions</h3>
+                        @*<div class="date-range">
+                <input type="text" data-range="true" data-multiple-dates-separator=" - " data-language="en" class="datepicker-here form-control" data-position='top left' placeholder="min - max date">
+                <i class="las la-calendar-alt"></i>
+            </div>*@
+                    </div>
+                    @if (data != null && data.Count > 0)
+                    {
+                        <div class="table-responsive-xl">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Pay. method</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in data)
+                                    {
+                                    <tr>
+                                        <td>
+                                            <div class="date">
+                                                <span>@item.CreatedDate.ToString("dd")</span>
+                                                <span>@item.CreatedDate.ToString("MMM")</span>
+                                                <span>@item.CreatedDate.ToString("yyyy")</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p>@item.Detail</p>
+                                            <span>@item.Description</span>
+                                        </td>
+                                        <td>
+                                            <p>@item.Type</p>
+                                        </td>
+                                        <td>
+                                            <span class="amount @(item.IsCredit?"plus":"minus")-amount">@(item.IsCredit?"+":"-") ₹ @item.Amount</span>
+                                        </td>
+                                        @*<td>
+            <div class="status-pending"><i class="fas fa-ellipsis-h"></i></div>
+        </td>*@
+                                        <td>
+                                            <div class="status-success"><i class="fas fa-check-circle"></i></div>
+                                        </td>
+                                    </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="load-more">
+                            <button type="button">No Transactions Found </button>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
